@@ -6,4 +6,4 @@ Als foodie, wil ik tijdens het boodschappen doen een product kunnen scannen, zod
 
 ## Wireflow
 
-![](./images/wireflow.jpeg)
+![](./readme-img/wireflow.jpeg)
