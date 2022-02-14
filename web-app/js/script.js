@@ -1,47 +1,30 @@
-window.onload = () => {
-    detect();
-  };
-  
-async function detect() {
-const barcodeDetector = new BarcodeDetector();
-const scanner = document.querySelector(".scanner");
-let scannedBarcode = [];
-const mediaStream = await navigator.mediaDevices.getUserMedia({
-    video: { facingMode: "environment" }
+(async () => {
+const stream = await navigator.mediaDevices.getUserMedia({
+    video: {
+    facingMode: {
+        ideal: "environment"
+    }
+    },
+    audio: false
 });
+const camera = document.querySelector("video");
+camera.srcObject = stream;
+await camera.play();
 
-const video = document.createElement("video");
-video.srcObject = mediaStream;
-video.autoplay = true
-
-scanner.before(video);
-
-function render() {
-    barcodeDetector
-    .detect(video)
-    .then((barcodes) => {
-        barcodes.forEach((barcode) => {
-        if (!scannedBarcode.includes(barcode.rawValue)) {
-            scannedBarcode.push(barcode.rawValue);
-            const li = document.createElement("li");
-            li.innerHTML = barcode.rawValue;
-            scanner.appendChild(li);
-        }
-        });
-    })
-    .catch(console.error);
-}
-
-(function renderLoop() {
-    requestAnimationFrame(renderLoop);
-    render();
+const barcodeDetector = new BarcodeDetector({formats: ['ean_13']});
+window.setInterval(async () => {
+    const barcodes = await barcodeDetector.detect(camera);
+    if (barcodes.length <= 0) {
+        return 
+    } else
+        getProductData(barcodes[0].rawValue)
+}, 1000)
 })();
-}
   
 
-function scan() {
+function getProductData(barcode) {
     const baseURL = 'https://world.openfoodfacts.org/api/v0/product/'
-    const productID = '8711200428953'
+    const productID = barcode
 
     fetch(baseURL + productID)
         .then((response) => {
