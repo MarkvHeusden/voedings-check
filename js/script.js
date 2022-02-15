@@ -1,24 +1,25 @@
 (async () => {
-const stream = await navigator.mediaDevices.getUserMedia({
-    video: {
-    facingMode: {
-        ideal: "environment"
-        }
-    },
-    audio: false
-});
-const camera = document.querySelector("video");
-camera.srcObject = stream;
-await camera.play();
+    const camera = await navigator.mediaDevices.getUserMedia({
+        video: {
+        facingMode: {
+            ideal: "environment"
+            }
+        },
+        audio: false
+    });
+    const video = document.querySelector("video");
+    video.srcObject = camera;
+    await video.play();
 
-const barcodeDetector = new BarcodeDetector({formats: ['ean_13']});
-window.setInterval(async () => {
-    const barcodes = await barcodeDetector.detect(camera);
-    if (barcodes.length <= 0) {
-        return 
-    } else
-        getProductData(barcodes[0].rawValue)
-}, 1000)
+    const barcodeDetector = new BarcodeDetector({formats: ['ean_13']});
+    window.setInterval(async () => {
+        const barcodes = await barcodeDetector.detect(video);
+        if (barcodes.length <= 0) {
+            return 
+        } else {
+            getProductData(barcodes[0].rawValue)
+        }
+    }, 1000)
 })();
   
 
@@ -54,22 +55,23 @@ function getProductData(barcode) {
                 // ${product.nutriments.map(nutri => `<li> </li>`)}
     
                 const productMarkup = `
-                <img src="${product.img}" alt="${product.name}" />
                 <h1>${product.name}</h1>
-                <ul>
-                
-                </ul>
-                <form action="">
-                    <input type="number" />
-                    <input type="text" />
-                </form>
-                <h2>Ingredienten</h2>
+                <img src="${product.img}" alt="${product.name}" />
                 `;
-    
-                document.querySelector('.product').innerHTML = productMarkup;
-            } else alert("Geen product info gevonden.");
+                
+                const detailsEl = document.querySelector('.details');
+                detailsEl.innerHTML = productMarkup;
+                detailsEl.classList.add('result', 'open')
+
+            } else {
+                alert("Geen product info beschikbaar.");
+                detailsEl.classList.remove('result', 'open')
+            }
         })
         .catch((err) => { 
             console.warn(err);
         });
 }
+
+const detailsEl = document.querySelector('.details');
+detailsEl.addEventListener('click', () => detailsEl.classList.toggle('open'));
