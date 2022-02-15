@@ -104,7 +104,7 @@ function showError() {
         <img src="img/error.svg" alt="error" />
         <h1>Scanner niet beschikbaar</h1>
     </div>
-    <p>Scanner niet beschikbaar. Update je device & browser of probeer een ander apparaat.</p>
+    <p>Scanner niet beschikbaar. Update je device & browser of probeer het op een ander apparaat.</p>
     `;
 
     const detailsEl = document.querySelector('.details');
