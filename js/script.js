@@ -1,3 +1,8 @@
+function startApp() {
+    getCamera()
+    showScanning()
+}
+
 async function getCamera() {
     const camera = await navigator.mediaDevices.getUserMedia({
         video: {
@@ -16,6 +21,7 @@ async function getCamera() {
 
 function detectBarcode(video) {
     const barcodeDetector = new BarcodeDetector({formats: ['ean_13']});
+
     window.setInterval(async () => {
         const barcodes = await barcodeDetector.detect(video);
         if (barcodes.length <= 0) {
@@ -25,32 +31,6 @@ function detectBarcode(video) {
         }
     }, 1000)
 }
-
-
-// async function detectBarcode() {
-//     const camera = await navigator.mediaDevices.getUserMedia({
-//         video: {
-//         facingMode: {
-//             ideal: "environment"
-//             }
-//         },
-//         audio: false
-//     });
-//     const video = document.querySelector("video");
-//     video.srcObject = camera;
-//     await video.play();
-
-//     const barcodeDetector = new BarcodeDetector({formats: ['ean_13']});
-//     window.setInterval(async () => {
-//         const barcodes = await barcodeDetector.detect(video);
-//         if (barcodes.length <= 0) {
-//             return 
-//         } else {
-//             getProductData(barcodes[0].rawValue)
-//         }
-//     }, 1000)
-// };
-getCamera()
   
 
 function getProductData(barcode) {
@@ -81,6 +61,17 @@ function getProductData(barcode) {
     });
 }
 
+function showScanning() {
+    const scanningMarkup = `
+        <h1>Richt je camera op een barcode...</h1>
+        <img src="img/barcode.png" alt="barcode placeholder" />
+    `;
+
+    const detailsEl = document.querySelector('.details');
+    detailsEl.classList.remove('open')
+    detailsEl.innerHTML = scanningMarkup;
+}
+
 function showProductData(product) {
     const productMarkup = `
     <h1>${product.name}</h1>
@@ -88,6 +79,7 @@ function showProductData(product) {
     `;
     
     const detailsEl = document.querySelector('.details');
+    detailsEl.addEventListener('click', () => detailsEl.classList.toggle('open'));
     detailsEl.innerHTML = productMarkup;
     detailsEl.classList.add('result', 'open')
 }
@@ -120,12 +112,12 @@ function showError() {
     detailsEl.innerHTML = errorMarkup;
 }
 
-if (!('BarcodeDetector' in window)) showError()
+if (!('BarcodeDetector' in window)) {
+    showError()
+}
 
-const detailsEl = document.querySelector('.details');
-detailsEl.addEventListener('click', () => detailsEl.classList.toggle('open'));
-
-
+const startBtn = document.querySelector('button');
+startBtn.addEventListener('click', startApp);
 
 
 // nutriments: {

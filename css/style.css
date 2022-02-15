@@ -4,6 +4,7 @@
     --clr-grey: #9aa4a7;
     --clr-warning: #f28c1c;
     --clr-error: #e02727;
+    --clr-light: white;
 }
 
 h1 {
@@ -21,6 +22,8 @@ p {
     font-size: 0.9em;
     color: var(--clr-grey);
     margin-top: 0;
+    /* letter-spacing: 0.03em; */
+    line-height: 1.5em;
 }
 
 body {
@@ -46,12 +49,12 @@ video {
 }
 
 section {
-    min-height: 100vh;
+    min-height: 100%;
     overflow-y: scroll;
     padding: 1rem 2rem;
     border-radius: 1em;
     z-index: 1;
-    background-color: white;
+    background-color: var(--clr-light);
     box-shadow: 0px -5px 15px 3px rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 0;
@@ -60,25 +63,39 @@ section {
     transform: translateY(26rem);
     transition: border-radius 0.8s, transform 0.8s;
 }
-
-section::after {
-    content: '';
-    width: 2.5rem;
-    height: 0.25rem;
-    background-color: var(--clr-dark-grey);
-    border-radius: 1em;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 1rem auto;
-    cursor: pointer;
-}
-
 section > img {
     width: 25%;
     margin: 1rem auto 0;
     transition: width 0.8s;
+}
+
+/* ---- Zero State ---- */
+
+section:not(.result) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+h1.zero {
+    text-align: left;
+    margin-top: 2rem;
+}
+
+button {
+    padding: 0.75em 1.5em;
+    border-radius: 2em;
+    border: none;
+    background-color: var(--clr-dark);
+    color: var(--clr-light);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 5rem;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* ---- Section opened ---- */
@@ -90,6 +107,23 @@ section.open {
 
 /* ---- Product found ---- */
 
+section.result {
+    cursor: pointer;
+}
+
+section.result::after {
+    content: '';
+    width: 2.5rem;
+    height: 0.25rem;
+    background-color: var(--clr-dark-grey);
+    border-radius: 1em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 1rem auto;
+}
+
 section.result > img {
     width: 75%;
 }
@@ -99,6 +133,7 @@ section.result > img {
 .failed {
     display: flex;
     justify-content: space-between;
+    flex-direction: row;
     align-items: center;
 }
 
