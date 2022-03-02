@@ -8,7 +8,7 @@ export function detectBarcode(video) {
         if (barcodes.length <= 0) {
             return 
         } else {
-            console.log('Fetching..')
+            // console.log('Fetching..')
             getProductData(barcodes[0].rawValue)
         }
     }, 1000)

@@ -15,10 +15,12 @@ export function getProductData(barcode) {
     })
     .then((data) => {
         if (data.status) {
+            
             const product = {
                 name: data.product.product_name_nl || data.product.product_name,
                 img: data.product.image_front_url
             }
+
             showProductData(product);
         } else {
             showWarningState()

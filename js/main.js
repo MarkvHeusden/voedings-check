@@ -1,7 +1,6 @@
-// import { Routie } from './routie.js'
 import { getCamera } from './modules/getCamera.js'
 import { showScanningState, showErrorState } from './modules/states.js'
-
+// import { Routie } from './modules/routie.js';
 
 // routie('test', function() {
 //     console.log('hoi')
@@ -11,8 +10,7 @@ if (!('BarcodeDetector' in window)) {
     showErrorState()
 }
 
-const startBtn = document.querySelector('button');
-startBtn.addEventListener('click', function() {
+document.querySelector('button').addEventListener('click', function() {
     getCamera()
     showScanningState()
 });
