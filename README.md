@@ -14,3 +14,5 @@ Als foodie, wil ik tijdens het boodschappen doen een product kunnen scannen, zod
 -   Open Food World API (https://world.openfoodfacts.org/data)
 
 ## 🔏 License
+
+MIT
