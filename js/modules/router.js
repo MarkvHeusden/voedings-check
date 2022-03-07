@@ -1,11 +1,18 @@
-// import { getCamera } from './modules/getCamera.js'
-// import { showScanningState, showErrorState } from './modules/states.js'
-// import { Routie } from './modules/routie.js';
+import { getCamera } from './barcodeDetector.js';
+import { showScanningState } from './states.js'
+import { getProductData } from './getProductData.js';
+import { showProductData } from './showProductData.js';
+import { Routie } from './vendor/routie.js';
 
-// routie({
-//     'users': function() {
-
-//     },
-//     'about': function() {
-//     }
-// });
+export function handleRoutes() { 
+    routie({
+        'scanning': () => {
+            getCamera()
+            showScanningState()
+        },
+        'product/:barcode': barcode => {
+            getProductData(barcode)
+            .then(response => showProductData(response))
+        }
+    })
+};

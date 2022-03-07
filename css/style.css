@@ -11,15 +11,15 @@ h1 {
     font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
-    text-align: center;
+    text-align: left;
     color: var(--clr-dark);
-    margin-top: 1em;
+    margin-top: 1rem;
 }
 
 p {
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
-    font-size: 0.9em;
+    font-size: 0.9rem;
     color: var(--clr-grey);
     margin-top: 0;
     /* letter-spacing: 0.03em; */
@@ -63,8 +63,7 @@ section {
     transform: translateY(65%);
     transition: border-radius 0.8s, transform 0.8s;
 }
-section > img,
-section > svg {
+section > img {
     width: 25%;
     margin: 1rem auto 0;
     transition: width 0.8s;
@@ -80,7 +79,6 @@ section:not(.result) {
 }
 
 h1.zero {
-    text-align: left;
     margin-top: 2rem;
 }
 
@@ -130,8 +128,14 @@ section.result::after {
     margin: 1rem auto;
 }
 
+section.result h1 {
+    margin: 2rem 1rem;
+}
+
 section.result > img {
-    width: 75%;
+    width: 100%;
+    height: 12rem;
+    object-fit: contain;
 }
 
 /* ---- States ---- */
@@ -149,16 +153,14 @@ section.result > img {
 }
 
 .warning h1 {
-    text-align: left;
     color: var(--clr-warning);
 }
 
 .error h1 {
-    text-align: left;
     color: var(--clr-error);
 }
 
-@media only screen and (max-width: 740px) {
+@media only screen and (max-width: 30rem) {
     main {
         height: 100%;
         width: 100%;

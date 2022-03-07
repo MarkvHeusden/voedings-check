@@ -1,4 +1,3 @@
-import { showProductData } from "./showProductData.js";
 import { showLoadingState, showWarningState } from "./states.js";
 
 export function getProductData(barcode) {
@@ -6,7 +5,7 @@ export function getProductData(barcode) {
 
     const baseURL = 'https://world.openfoodfacts.org/api/v0/product/'
 
-    fetch(baseURL + barcode)
+    return fetch(baseURL + barcode)
     .then((response) => {
         if (response.ok) {
             return response.json();
@@ -16,14 +15,11 @@ export function getProductData(barcode) {
     })
     .then((data) => {
         if (data.status) {
-            
             const product = {
-                barcode: barcode,
                 name: data.product.product_name_nl || data.product.product_name,
-                img: data.product.image_front_url
+                img: data.product.image_front_url || Object.values(data.product.selected_images.front.display)[0]
             }
-
-            showProductData(product);
+            return product;
         } else {
             showWarningState()
         }

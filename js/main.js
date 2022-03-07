@@ -1,25 +1,12 @@
-import { getCamera } from './modules/getCamera.js'
-import { showScanningState, showErrorState } from './modules/states.js'
-import { getProductData } from './modules/getProductData.js';
-import { Routie } from './modules/routie.js';
+//  export weghalen routie, router.js,  activity diagram, product info, zoekfunctie, readme
+import { showErrorState } from "./modules/states.js"
+import { handleRoutes } from "./modules/router.js"
 
-routie({
-    'scanning': () => {
-        getCamera()
-        showScanningState()
-    },
-    'product/:barcode': barcode => {
-        getProductData(barcode)
-    }
-});
-
-// activity diagram, product info, zoekfunctie, readme
-
+handleRoutes()
 
 if (!('BarcodeDetector' in window)) {
     showErrorState()
 }
-
 
 
 // nutriments: {
