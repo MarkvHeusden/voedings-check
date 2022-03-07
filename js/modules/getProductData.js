@@ -1,7 +1,9 @@
 import { showProductData } from "./showProductData.js";
-import { showWarningState } from "./states.js";
+import { showLoadingState, showWarningState } from "./states.js";
 
 export function getProductData(barcode) {
+    showLoadingState();
+
     const baseURL = 'https://world.openfoodfacts.org/api/v0/product/'
     const productID = barcode
 

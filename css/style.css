@@ -83,7 +83,7 @@ h1.zero {
     margin-top: 2rem;
 }
 
-button {
+a {
     padding: 0.75em 1.5em;
     border-radius: 2em;
     border: none;
@@ -96,6 +96,11 @@ button {
     margin-top: 7.5rem;
     cursor: pointer;
     box-shadow: 0px 5px 15px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+a:hover {
+    transform: scale(1.04);
 }
 
 /* ---- Section opened ---- */

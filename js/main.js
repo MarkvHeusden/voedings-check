@@ -1,19 +1,19 @@
 import { getCamera } from './modules/getCamera.js'
 import { showScanningState, showErrorState } from './modules/states.js'
-// import { Routie } from './modules/routie.js';
+import { Routie } from './modules/routie.js';
 
-// routie('test', function() {
-//     console.log('hoi')
-// });
+routie('scanning', function() {
+    getCamera()
+    showScanningState()
+});
+
+// activity diagram, product info, zoekfunctie
+
 
 if (!('BarcodeDetector' in window)) {
     showErrorState()
 }
 
-document.querySelector('button').addEventListener('click', function() {
-    getCamera()
-    showScanningState()
-});
 
 
 // nutriments: {
