@@ -1,13 +1,19 @@
 import { getCamera } from './modules/getCamera.js'
 import { showScanningState, showErrorState } from './modules/states.js'
+import { getProductData } from './modules/getProductData.js';
 import { Routie } from './modules/routie.js';
 
-routie('scanning', function() {
-    getCamera()
-    showScanningState()
+routie({
+    'scanning': () => {
+        getCamera()
+        showScanningState()
+    },
+    'product/:barcode': barcode => {
+        getProductData(barcode)
+    }
 });
 
-// activity diagram, product info, zoekfunctie
+// activity diagram, product info, zoekfunctie, readme
 
 
 if (!('BarcodeDetector' in window)) {

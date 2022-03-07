@@ -9,7 +9,8 @@ export function detectBarcode(video) {
             return 
         } else {
             // console.log('Fetching..')
-            getProductData(barcodes[0].rawValue)
+            window.location.href = '#product/' + barcodes[0].rawValue;
+            // getProductData(barcodes[0].rawValue)
         }
     }, 1000)
 }

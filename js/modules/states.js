@@ -8,10 +8,11 @@ export function showScanningState() {
     `;
 
     const detailsEl = document.querySelector('.details');
-    detailsEl.classList.remove('open')
+    detailsEl.classList.remove('open', 'result')
     detailsEl.innerHTML = scanningMarkup;
 }
 
+// Loading state
 export function showLoadingState() {
     const scanningMarkup = `
         <h1>Product info ophalen...</h1>

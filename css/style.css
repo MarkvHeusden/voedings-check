@@ -63,7 +63,8 @@ section {
     transform: translateY(65%);
     transition: border-radius 0.8s, transform 0.8s;
 }
-section > img {
+section > img,
+section > svg {
     width: 25%;
     margin: 1rem auto 0;
     transition: width 0.8s;
