@@ -1,6 +1,6 @@
 import { getCamera } from './barcodeDetector.js';
 import { showState } from './states.js'
-import { getProductData } from './getProductData.js';
+import { getProductData } from './getData.js';
 import { Routie } from './vendor/routie.js';
 
 export function handleRoutes() { 

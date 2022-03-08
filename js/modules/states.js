@@ -24,7 +24,14 @@ export function showState(state, productData) {
             markup = `
             <h1>${productData.name}</h1>
             <img src="${productData.img}" alt="${productData.name}" />
+            <ul class="nutriments">
             `
+            Object.values(productData.nutriments).forEach(nutri => {
+                markup += `<li><span>${Math.round(nutri.value * 10) / 10} ${nutri.unit}</span>${nutri.name}</li>`
+            })
+            markup += `</ul>`
+
+
             detailsEl.addEventListener('click', toggleDetails);
             detailsEl.classList.add('result', 'open')
             break
@@ -70,4 +77,9 @@ export function showState(state, productData) {
     }
 
     detailsEl.innerHTML = markup;
+}
+
+// Check if Barcode Detector is available
+if (!('BarcodeDetector' in window)) {
+    showState('no-detector')
 }
