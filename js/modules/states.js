@@ -29,7 +29,9 @@ export function showState(state, productData) {
             Object.values(productData.nutriments).forEach(nutri => {
                 markup += `<li><span>${Math.round(nutri.value * 10) / 10} ${nutri.unit}</span>${nutri.name}</li>`
             })
-            markup += `</ul>`
+            markup += `</ul>
+            <h2>Ingrediënten</h2>
+            `
 
 
             detailsEl.addEventListener('click', toggleDetails);

@@ -21,50 +21,52 @@ export function getProductData(barcode) {
 }
 
 function createProductObject(data) {
+    // Check middels spread en && operator of de voedingswaarde in de database aanwezig is, zo niet, zet deze niet in het object https://stackoverflow.com/questions/11704267/in-javascript-how-to-conditionally-add-a-member-to-an-object
+
     const productData = {
         name: data['product']['product_name_nl'] || data['product']['product_name'],
         img: data['product']['image_front_url'] || Object.values(data['product']['selected_images']['front']['display'])[0],
-        nutriments: {  
-            kcal: {
+        nutriments: {
+            ...(data['product']['nutriments']['energy-kcal_100g'] && { kcal: {
                 name: 'Calorieën',
                 value: data['product']['nutriments']['energy-kcal_100g'],
                 unit: data['product']['nutriments']['energy-kcal_unit']
-            },
-            carbs: {
+            }}),
+            ...(data['product']['nutriments']['carbohydrates_100g'] && { carbs: {
                 name: 'Koolhydraten',
                 value: data['product']['nutriments']['carbohydrates_100g'],
                 unit: data['product']['nutriments']['carbohydrates_unit']
-            },
-            fat: {
+            }}),
+            ...(data['product']['nutriments']['fat_100g'] && { fat: {
                 name: 'Vetten',
                 value: data['product']['nutriments']['fat_100g'],
                 unit: data['product']['nutriments']['fat_unit']
-            },
-            sat_fat: {
+            }}),
+            ...(data['product']['nutriments']['saturated-fat_100g'] && { sat_fat: {
                 name: 'Verz. vet',
                 value: data['product']['nutriments']['saturated-fat_100g'],
                 unit: data['product']['nutriments']['saturated-fat_unit']
-            },
-            fiber: {
+            }}),
+            ...(data['product']['nutriments']['fiber_100g'] && { fiber: {
                 name: 'Vezels',
                 value: data['product']['nutriments']['fiber_100g'],
-                unit: data['product']['nutriments']['fiber_unit']
-            },
-            protein: {
+                unit: data['product']['nutriments']['fiber_unit'],
+            }}),
+            ...(data['product']['nutriments']['proteins_100g'] && { protein: {
                 name: 'Eiwitten',
                 value: data['product']['nutriments']['proteins_100g'],
                 unit: data['product']['nutriments']['proteins_unit']
-            },
-            salt: {
+            }}),
+            ...(data['product']['nutriments']['salt_100g'] && { salt: {
                 name: 'Zout',
                 value: data['product']['nutriments']['salt_100g'],
                 unit: data['product']['nutriments']['salt_unit']
-            },
-            suger: {
+            }}),
+            ...(data['product']['nutriments']['sugars_100g'] && { suger: {
                 name: 'Suiker',
                 value: data['product']['nutriments']['sugars_100g'],
                 unit: data['product']['nutriments']['sugars_unit']
-            }
+            }})
         }
     }
     return productData

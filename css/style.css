@@ -5,7 +5,7 @@
     --clr-grey: #9aa4a7;
     --clr-warning: #f28c1c;
     --clr-error: #e02727;
-    --clr-light: white;
+    --clr-light: #fff;
 }
 
 h1,
@@ -16,6 +16,15 @@ span {
     text-align: center;
     color: var(--clr-dark);
     margin-top: 1rem;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--clr-dark);
+    margin-top: 5rem;
 }
 
 p,
@@ -134,7 +143,7 @@ section.result::after {
 }
 
 section.result h1 {
-    margin: 2rem 1rem;
+    margin: 3rem 1rem 2rem;
     text-align: center;
 }
 
@@ -152,6 +161,16 @@ section.result > img {
     display: flex;
     overflow-y: scroll;
     white-space: nowrap;
+    position: relative;
+}
+
+.nutriments::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    height: 100%;
+    width: 2rem;
+    background-color: #29a7ce;
 }
 
 .nutriments::-webkit-scrollbar {
