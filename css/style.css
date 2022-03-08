@@ -11,7 +11,7 @@ h1 {
     font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
-    text-align: left;
+    text-align: center;
     color: var(--clr-dark);
     margin-top: 1rem;
 }
@@ -43,7 +43,7 @@ main {
 }
 
 video {
-    height: 68%;
+    height: 75%;
     object-fit: cover;
     background-color: var(--clr-dark);
 }
@@ -60,7 +60,7 @@ section {
     top: 0;
     left: 0;
     right: 0;
-    transform: translateY(65%);
+    transform: translateY(70%);
     transition: border-radius 0.8s, transform 0.8s;
 }
 section > img {
@@ -80,6 +80,7 @@ section:not(.result) {
 
 h1.zero {
     margin-top: 2rem;
+    text-align: left;
 }
 
 a {
@@ -151,6 +152,10 @@ section.result > img {
 .failed img {
     width: 3rem;
     margin-right: 1rem;
+}
+
+.failed h1 {
+    text-align: left;
 }
 
 .warning h1 {

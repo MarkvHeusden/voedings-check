@@ -1,5 +1,3 @@
-import { showWarningState } from "./states.js";
-
 export function getProductData(barcode) {
     const baseURL = 'https://world.openfoodfacts.org/api/v0/product/'
 
@@ -19,11 +17,7 @@ export function getProductData(barcode) {
             }
             return product;
         } else {
-            // return Promise.reject(data);
-            showWarningState()
+            return Promise.reject('no-info');
         }
     })
-    .catch((err) => { 
-        console.warn(err);
-    });
 }

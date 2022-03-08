@@ -1,11 +1,11 @@
-//  activity diagram, product info, zoekfunctie, readme, switch case states
-import { showErrorState } from "./modules/states.js"
+//  insertAdjecent, activity diagram, product info, zoekfunctie, readme, switch case states
+import { showState } from "./modules/states.js"
 import { handleRoutes } from "./modules/router.js"
 
 handleRoutes()
 
 if (!('BarcodeDetector' in window)) {
-    showErrorState()
+    showState('no-detector')
 }
 
 
