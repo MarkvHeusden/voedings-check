@@ -11,9 +11,7 @@ export function getProductData(barcode) {
     })
     .then((data) => {
         if (data.status) {
-            const productData = createProductObject(data)
-            console.log(productData);
-            return productData;
+            return createProductObject(data);
         } else {
             return Promise.reject('no-info');
         }
@@ -67,7 +65,8 @@ function createProductObject(data) {
                 value: data['product']['nutriments']['sugars_100g'],
                 unit: data['product']['nutriments']['sugars_unit']
             }})
-        }
+        },
+        ingredients: data['product']['ingredients_text']
     }
     return productData
 }

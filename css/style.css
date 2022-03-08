@@ -24,7 +24,7 @@ h2 {
     font-weight: 700;
     text-align: center;
     color: var(--clr-dark);
-    margin-top: 5rem;
+    margin: 4rem 0 0.75rem;
 }
 
 p,
@@ -62,7 +62,7 @@ video {
 
 section {
     min-height: 100%;
-    overflow-y: scroll;
+    overflow: hidden;
     padding: 1rem 2rem;
     border-radius: 1.5em;
     z-index: 1;
@@ -72,8 +72,9 @@ section {
     top: 0;
     left: 0;
     right: 0;
-    transform: translateY(70%);
-    transition: border-radius 0.8s, transform 0.8s;
+    /* transform: translateY(70%); */
+    margin-top: 135%;
+    transition: border-radius 0.8s, margin-top 0.8s;
 }
 section > img {
     width: 25%;
@@ -119,7 +120,8 @@ a:hover {
 
 section.open {
     border-radius: 0;
-    transform: translateY(0);
+    /* transform: translateY(0); */
+    margin-top: 0;
 }
 
 /* ---- Product found ---- */
@@ -148,30 +150,30 @@ section.result h1 {
 }
 
 section.result > img {
-    width: 90%;
+    width: calc(100% - 2rem);
     height: 12rem;
     object-fit: contain;
 }
 
 .nutriments {
     cursor: text;
-    margin: 1.5rem 0 2rem;
+    margin: 0;
     padding-left: 2rem;
     list-style-type: none;
     display: flex;
     overflow-y: scroll;
     white-space: nowrap;
-    position: relative;
+    /* position: relative; */
 }
 
-.nutriments::before {
+/* .nutriments::before {
     content: '';
     position: absolute;
     inset: 0 auto 0 0;
     height: 100%;
     width: 2rem;
     background-color: #29a7ce;
-}
+} */
 
 .nutriments::-webkit-scrollbar {
     display: none;
@@ -192,6 +194,11 @@ section.result > img {
     align-items: center;
     justify-content: space-between;
     padding-right: 1rem;
+}
+
+section.result p {
+    padding: 0 2rem;
+    text-align: left;
 }
 
 /* ---- States ---- */
