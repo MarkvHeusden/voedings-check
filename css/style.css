@@ -130,10 +130,11 @@ section.result::after {
 
 section.result h1 {
     margin: 2rem 1rem;
+    text-align: center;
 }
 
 section.result > img {
-    width: 100%;
+    width: 90%;
     height: 12rem;
     object-fit: contain;
 }

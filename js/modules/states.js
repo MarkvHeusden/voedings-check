@@ -1,4 +1,8 @@
-import { toggleDetails } from "./showProductData.js";
+// Toggle details menu
+export function toggleDetails() {
+    const detailsEl = document.querySelector('.details');
+    detailsEl.classList.toggle('open');
+}
 
 // Scanning state
 export function showScanningState() {

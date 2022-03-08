@@ -1,3 +1,5 @@
+import { toggleDetails } from "./states.js";
+
 // Display product data
 export function showProductData(product) {
     const productMarkup = `
@@ -9,10 +11,4 @@ export function showProductData(product) {
     detailsEl.addEventListener('click', toggleDetails);
     detailsEl.innerHTML = productMarkup;
     detailsEl.classList.add('result', 'open')
-}
-
-// Toggle details menu
-export function toggleDetails() {
-    const detailsEl = document.querySelector('.details');
-    detailsEl.classList.toggle('open');
 }

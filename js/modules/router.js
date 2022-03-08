@@ -1,5 +1,5 @@
 import { getCamera } from './barcodeDetector.js';
-import { showScanningState } from './states.js'
+import { showScanningState, showLoadingState } from './states.js'
 import { getProductData } from './getProductData.js';
 import { showProductData } from './showProductData.js';
 import { Routie } from './vendor/routie.js';
@@ -11,8 +11,9 @@ export function handleRoutes() {
             showScanningState()
         },
         'product/:barcode': barcode => {
+            showLoadingState();
             getProductData(barcode)
-            .then(response => showProductData(response))
+            .then(data => showProductData(data))
         }
     })
 };

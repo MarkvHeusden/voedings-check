@@ -1,4 +1,4 @@
-//  export weghalen routie, router.js,  activity diagram, product info, zoekfunctie, readme
+//  activity diagram, product info, zoekfunctie, readme, switch case states
 import { showErrorState } from "./modules/states.js"
 import { handleRoutes } from "./modules/router.js"
 

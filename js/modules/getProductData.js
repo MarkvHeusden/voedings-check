@@ -1,8 +1,6 @@
-import { showLoadingState, showWarningState } from "./states.js";
+import { showWarningState } from "./states.js";
 
 export function getProductData(barcode) {
-    showLoadingState();
-
     const baseURL = 'https://world.openfoodfacts.org/api/v0/product/'
 
     return fetch(baseURL + barcode)
@@ -21,6 +19,7 @@ export function getProductData(barcode) {
             }
             return product;
         } else {
+            // return Promise.reject(data);
             showWarningState()
         }
     })
