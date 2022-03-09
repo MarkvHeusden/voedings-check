@@ -1,17 +1,10 @@
-//  insertAdjecent, activity diagram, product info, zoekfunctie, readme
+//  insertAdjecent, activity diagram, product info, zoekfunctie, readme, format
 import { handleRoutes } from "./modules/router.js"
+import { showState } from "./modules/states.js"
 
 handleRoutes()
 
-
-// nutriments: {
-//     kcal: data.product.nutriments.energy-kcal,
-//     carb: data.product.nutriments.carbohydrates,
-//     protein: data.product.nutriments.proteins,
-//     fat: data.product.nutriments.fat,
-//     sat_fat: data.product.nutriments.saturated-fat,
-//     suger: data.product.nutriments.sugers,
-//     salt: data.product.nutriments.salt
-// }
-
-// ${product.nutriments.map(nutri => `<li> </li>`)}
+// Check if Barcode Detector is available
+if (!('BarcodeDetector' in window)) {
+    showState('no-detector')
+}

@@ -2,23 +2,23 @@ export function getProductData(barcode) {
     const baseURL = 'https://world.openfoodfacts.org/api/v0/product/'
 
     return fetch(baseURL + barcode)
-    .then((response) => {
+    .then(response => {
         if (response.ok) {
             return response.json();
         } else {
             return Promise.reject(response);
         }
     })
-    .then((data) => {
+    .then(data => {
         if (data.status) {
-            return createProductObject(data);
+            return cleanProductData(data);
         } else {
             return Promise.reject('no-info');
         }
     })
 }
 
-function createProductObject(data) {
+function cleanProductData(data) {
     // Check middels spread en && operator of de voedingswaarde in de database aanwezig is, zo niet, zet deze niet in het object https://stackoverflow.com/questions/11704267/in-javascript-how-to-conditionally-add-a-member-to-an-object
 
     const productData = {

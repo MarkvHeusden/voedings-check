@@ -80,8 +80,3 @@ export function showState(state, productData) {
 function toggleDetails() {
     this.classList.toggle('open');
 }
-
-// Check if Barcode Detector is available
-if (!('BarcodeDetector' in window)) {
-    showState('no-detector')
-}
