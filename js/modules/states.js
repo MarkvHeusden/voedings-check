@@ -32,7 +32,7 @@ export function showState(state, productData) {
             })
             markup += `</ul>
             <h2>Ingrediënten</h2>
-            <p>${productData.ingredients}</p>
+            <p>${productData.ingredients ? productData.ingredients : 'Geen informatie over ingrediënten gevonden.'}</p>
             `
             detailsEl.addEventListener('click', toggleDetails);
             detailsEl.classList.add('result', 'open')
