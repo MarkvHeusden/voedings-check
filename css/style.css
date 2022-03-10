@@ -160,17 +160,7 @@ section.result > img {
     display: flex;
     overflow-y: scroll;
     white-space: nowrap;
-    /* position: relative; */
 }
-
-/* .nutriments::before {
-    content: '';
-    position: absolute;
-    inset: 0 auto 0 0;
-    height: 100%;
-    width: 2rem;
-    background-color: #29a7ce;
-} */
 
 .nutriments::-webkit-scrollbar {
     display: none;
@@ -192,7 +182,6 @@ section.result > img {
 section.result p {
     padding: 0 2rem;
     text-align: center;
-    /* pointer-events: none; */
 }
 
 /* ---- States ---- */
